@@ -38,10 +38,10 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
         messageReq[to] = -1
     messageReq[to] += 1
     client._client.sendMessage(messageReq[to], mes)
-
+;0
 def NOTIFIED_ACCEPT_GROUP_INVITATION(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + ", Selamat Datang")
+        sendMessage(op.param1, client.getContact(op.param2).displayName + ", Welcome, bott by : krisnabiru. :)")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_ACCEPT_GROUP_INVITATION\n\n")
@@ -53,7 +53,7 @@ def NOTIFIED_KICKOUT_FROM_GROUP(op):
     try:
 				client.kickoutFromGroup(op.param1,[op.param2])
 				client.inviteIntoGroup(op.param1,[op.param3])
-				sendMessage(op.param1, client.getContact(op.param2).displayName + ", Kicker kampret")				
+				sendMessage(op.param1, client.getContact(op.param2).displayName + ", jangan maen kick ya sayang :*")				
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
@@ -63,7 +63,7 @@ tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
 
 def NOTIFIED_UPDATE_GROUP(op):
     try:
-                sendMessage(op.param1, client.getContact(op.param2).displayName + ", Jangan Dimainin QR-nya :3\nSaya Kick ya")
+                sendMessage(op.param1, client.getContact(op.param2).displayName + ", maenin QR code ga segampang maenin perasaan :')")
                 client.kickoutFromGroup(op.param1,[op.param2])
     except Exception as e:
         print e
@@ -74,7 +74,7 @@ tracer.addOpInterrupt(11,NOTIFIED_UPDATE_GROUP)
 
 def NOTIFIED_CANCEL_INVITATION_GROUP(op):
     try:
-                sendMessage(op.param1, client.getContact(op.param2).displayName + ", Kenapa dibatalin?\nitu temen saya")
+                sendMessage(op.param1, client.getContact(op.param2).displayName + ", jangan di cancel invite an nya ya :3")
                 client.kickoutFromGroup(op.param1,[op.param2])
                 client.inviteIntoGroup(op.param1,[op.param3])
     except Exception as e:
@@ -126,7 +126,7 @@ def SEND_MESSAGE(op):
 		if msg.text == "Speed":
                     start = time.time()
                     elapsed_time = time.time() - start
-                    sendMessage(msg.to, "%sseconds" % (elapsed_time))
+                    sendMessage(msg.to, "%s Per Detik" % (elapsed_time))
                     print ("\nCek Speed Bot")
 #-------------------------------------------------------------
 
